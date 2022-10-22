@@ -55,3 +55,14 @@ console.log(circle1.perimeter)
 console.log(circle1.area)
 console.groupEnd('Circle')
 
+// Culcular la altura de un triangulo isosceles (dos lados iguales y uno distinto)
+function calculateHightTriangle(sides, base) {
+    if (sides== base) {
+      console.warn('Este no es un triangulo isoceles');
+    } else{
+        return Math.sqrt(Math.pow(sides, 2) - (Math.pow(base,2)/4))
+   
+    }
+}
+
+
