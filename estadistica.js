@@ -7,3 +7,11 @@ function calculateAverage(array) {
     return average
 }
 
+
+function calculateAverage2(array) {
+    let sumArray =  array.reduce((accumulatedValue, newValue)=>{
+        return accumulatedValue + newValue
+    })
+    const average = sumArray/array.length
+    return average
+}
