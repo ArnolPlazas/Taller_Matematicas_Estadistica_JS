@@ -51,3 +51,23 @@ function calculateMedian(array){
 
     return medianArray
 }
+
+const histogram = array => {
+    const obj = new Object()
+    array.forEach(element => !obj[element] ? obj[element] = 1 : obj[element]++)
+    return obj;
+}
+
+function calculateTrend(list){
+    const array = Object.entries(histogram(list))
+    const sortArray = array.sort((accValue, newValue)=>{
+        return accValue[1] - newValue[1]
+
+    })
+
+    const listMaxNumber = sortArray[sortArray.length -1]
+    const trend = listMaxNumber[0]
+
+    return trend
+
+}
