@@ -31,13 +31,12 @@ PlatziMath.calculateMedian = (array) =>{
         return accValue - newValue
 
     })
-    console.log(sortArray);
-    const arrayIsEven = isEven(sortArray)
+    const arrayIsEven = PlatziMath.isEven(sortArray)
     let medianArray 
     if(arrayIsEven){
         const halfValue1 = sortArray[(sortArray.length/2) -1]
         const halfValue2 = sortArray[sortArray.length/2]
-        medianArray = calculateAverage([halfValue1, halfValue2])
+        medianArray = PlatziMath.calculateAverage([halfValue1, halfValue2])
     } else{
         const halfValueIndex = Math.floor(sortArray.length/2)
         medianArray = sortArray[halfValueIndex]
@@ -53,8 +52,8 @@ const histogram = array => {
 }
 
 PlatziMath.calculateTrend = (array) =>{
-    const array = Object.entries(histogram(array))
-    const sortArray = array.sort((accValue, newValue)=>{
+    const arrayHistogram = Object.entries(histogram(array))
+    const sortArray = arrayHistogram.sort((accValue, newValue)=>{
         return accValue[1] - newValue[1]
 
     })
