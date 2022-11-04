@@ -17,3 +17,29 @@ function medianByPerson(person) {
     return medianSalaries
 
 }
+
+function forecastByPerson(person) {
+    const jobs = lookForPerson(person).trabajos;
+
+    let percentagesIncrease = [];
+
+    for (let i = 1; i < jobs.length; i++){
+        const currentSalary = jobs[i].salario;
+        const previousSalary = jobs[i - 1].salario;
+        const increase = currentSalary - previousSalary;
+        const percentageIncrease = increase/previousSalary;
+        percentagesIncrease.push(percentageIncrease);
+        
+    }
+
+    const medianPercentageIncrese = PlatziMath.calculateMedian(percentagesIncrease)
+
+    const currentSalary = jobs[jobs.length-1].salario;
+
+    const nextSalary = currentSalary  + (currentSalary * medianPercentageIncrese)
+
+
+    console.log({nextSalary});
+
+
+}
