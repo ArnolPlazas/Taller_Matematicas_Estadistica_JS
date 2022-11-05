@@ -40,6 +40,22 @@ function forecastByPerson(person) {
 
 
     console.log({nextSalary});
-
-
 }
+
+// Analysis by company
+const companies = {}
+
+for(persona of salarios){
+    for(job of persona.trabajos){
+        if(!companies[job.empresa]){
+            companies[job.empresa] = {};
+        }
+
+        if(!companies[job.empresa][job.year]){
+            companies[job.empresa][job.year] = [];
+        }
+        companies[job.empresa][job.year].push(job.salario);
+    }
+}
+
+
