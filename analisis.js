@@ -59,3 +59,14 @@ for(persona of salarios){
 }
 
 
+function medianCompanyYear(name, year){
+    if(!companies[name]){
+        console.warn('this company does not exist');
+    } else if(!companies[name][year]){
+        console.warn('this company does not pay a salary this year ');
+    } else{
+        return PlatziMath.calculateMedian(companies[name][year]);
+
+    }
+
+}
