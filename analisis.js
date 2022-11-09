@@ -70,3 +70,33 @@ function medianCompanyYear(name, year){
     }
 
 }
+
+function forecastByCompany(name) {
+    if(!companies[name]){
+        console.warn('this company does not exist');
+    } else{
+        const conmpanyYears = Object.keys(companies[name]);
+        const listMedianYears = conmpanyYears.map((year) =>{
+            return medianCompanyYear(name, year)
+        });
+        let percentagesIncrease = [];
+
+        for (let i = 1; i < listMedianYears.length; i++){
+            const currentSalary = listMedianYears[i];
+            const previousSalary = listMedianYears[i - 1];
+            const increase = currentSalary - previousSalary;
+            const percentageIncrease = increase/previousSalary;
+            percentagesIncrease.push(percentageIncrease);
+            
+        }
+
+        const medianPercentageIncrese = PlatziMath.calculateMedian(percentagesIncrease)
+
+        const lastMedianSalary = listMedianYears[listMedianYears.length-1];
+
+        const nextMedianSalary = lastMedianSalary  + (lastMedianSalary * medianPercentageIncrese)
+
+
+        console.log({nextMedianSalary});
+    }
+}
