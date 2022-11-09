@@ -100,3 +100,26 @@ function forecastByCompany(name) {
         console.log({nextMedianSalary});
     }
 }
+
+function medianGeneral() {
+    const listMedians = salarios.map(person => medianByPerson(person.name));
+    const median = PlatziMath.calculateMedian(listMedians);
+    console.log(median);
+}
+
+function medianTop10() {
+    const listMedians = salarios.map(person => medianByPerson(person.name));
+    const listMediansSorted = listMedians.sort((accValue, newValue)=>{
+        return accValue - newValue
+
+    })
+
+    const amount = listMediansSorted.length/10;
+    const limit = listMediansSorted.length - amount;
+
+    const top10 = listMediansSorted.slice(limit, listMediansSorted.length)
+
+    const medianTop10 = PlatziMath.calculateMedian(top10)
+
+    console.log(medianTop10);
+}
